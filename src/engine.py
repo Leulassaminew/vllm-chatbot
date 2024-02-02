@@ -60,8 +60,13 @@ class vLLMEngine:
             yield batch
 
     async def generate_vllm(self, llm_input, validated_sampling_params, batch_size, stream, apply_chat_template, question, request_id: str) -> AsyncGenerator[dict, None]:
-        past ="""You are a psychologist named dolly your task is to ask the question below while keeping the conversation below
+        past ="""You are a psychologist named dolly 
+        You do not talk much.
+        your only task is to ask the question below.
+        Never be talkative only ask the question below
+        Your only topic is the question below
         Your only task is to ask this question while keeping the conversation flow
+        Do not ask any other Question other than the question below.
         #Question: """
         past=past+question
         promp={
