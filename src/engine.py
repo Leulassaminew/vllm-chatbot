@@ -75,6 +75,7 @@ class vLLMEngine:
         }
         p=[promp]
         llm_input=p+llm_input
+        llm_input[-1]="Give a response and ask this question. Question:"+question+"Users response:"+llm_input[-1]["content"]
         if apply_chat_template or isinstance(llm_input, list):
             llm_input = self.tokenizer.apply_chat_template(llm_input)
         validated_sampling_params = SamplingParams(**validated_sampling_params)
